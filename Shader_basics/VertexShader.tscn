@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.623529, 0.164706, 0.164706, 1 )
+metallic = 0.2
+roughness = 0.31
+emission_enabled = true
+emission = Color( 0.25098, 0.196078, 0.196078, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = true
+normal_scale = -0.41
+anisotropy_enabled = true
+anisotropy = 0.25
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+void vertex()
+{
+	VERTEX.z *= sin(TIME);
+	}
+	"
+
+[sub_resource type="ShaderMaterial" id=3]
+next_pass = SubResource( 4 )
+shader = SubResource( 2 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )

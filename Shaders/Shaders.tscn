@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://cactus.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 fill_color:hint_color;
+uniform float radius = 10.0;
+
+void fragment () {
+	COLOR.rgb = fill_color.rgb;
+	COLOR.a = texture(TEXTURE, UV).a;
+	// code
+	vec4 new_color = texture(TEXTURE, UV);
+	vec2 pixel_size = TEXTURE_PIXEL_SIZE;
+	
+	new_color += texture(TEXTURE, UV + vec2(0, -radius) * pixel_size);
+	new_color += texture(TEXTURE, UV + vec2(0, radius) * pixel_size);
+	new_color += texture(TEXTURE, UV + vec2(-radius, 0) * pixel_size);
+	new_color += texture(TEXTURE, UV + vec2(radius, 0) * pixel_size);
+	
+	COLOR = new_color / 5.0;
+	}
+
+void vertex () {
+	// code
+	}
+
+void light () {
+	// code
+	}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/fill_color = Color( 0.772549, 0.184314, 0.184314, 1 )
+shader_param/radius = 10.0
+
+[node name="Sprite" type="Sprite"]
+material = SubResource( 2 )
+texture = ExtResource( 1 )
