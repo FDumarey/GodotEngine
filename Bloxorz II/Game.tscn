@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+[node name="Camera" type="Camera" parent="."]
