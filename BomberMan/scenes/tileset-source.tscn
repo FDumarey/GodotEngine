@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/bricks.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Tileset" type="Node2D"]
+
+[node name="Solidbrick" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Solidbrick"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solidbrick/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Breakablebrick" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Breakablebrick"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Breakablebrick/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Backgroundbrick" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Backgroundbrick"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgroundbrick/StaticBody2D"]
+shape = SubResource( 1 )
