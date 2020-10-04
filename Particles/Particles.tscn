@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.22536, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0147333 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.482993, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.992188, 0.558105, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 10
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 10.0
+scale = 10.0
+scale_random = 0.3
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
+[node name="Particles" type="Node2D"]
+
+[node name="Fire" type="Particles2D" parent="."]
+position = Vector2( 119.149, 116.155 )
+rotation = -1.5708
+amount = 16
+process_material = SubResource( 3 )
+texture = SubResource( 5 )
+
+[node name="Explosion" type="Particles2D" parent="."]
+position = Vector2( 328.643, 115.819 )
+amount = 100
+explosiveness = 1.0
+process_material = SubResource( 10 )
